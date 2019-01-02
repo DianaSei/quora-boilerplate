@@ -2,9 +2,11 @@
 <%= "Welcome to Quora Clone!" %> <br/>
 <%= "Today is #{@date}" %>
 
-<h2>Sign up for an account!</h2>
+<h2>Sign up for an account now!</h2>
 <form method="post" action="/signup">
     <input type=text placeholder="Email" name="user[my_email]"><br>
     <input type=password placeholder="Password" name="user[password]"></br>
     <input type=submit value="Sign up">
 </form>
+
+<p> If you are already a registered user please <a href ="http://localhost:4567/login">login</a> here </p>
