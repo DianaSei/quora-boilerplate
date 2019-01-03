@@ -4,89 +4,110 @@ set :sessions => true
 
 get '/' do
   @date = DateTime.now.strftime("%D")
-  erb :"show"
+  erb :"home"
 end
 
-# ======== SIGN UP ===============
+# # ======== SIGN UP ===============
 
-post '/signup' do
-  user = User.new(params[:user])
+# post '/signup' do
+#   user = User.new(params[:user])
 
-  if user.save
-    # what should happen if the user is saved?
-    redirect "/signed_up"
+#   if user.save
+#     # what should happen if the user is saved?
+#     redirect "/signed_up"
 
-  else
-    # what should happen if the user keyed in invalid date?
-    p "Sorry your email or password is invalid! Try again!"
-  end
-end 
+#   else
+#     # what should happen if the user keyed in invalid date?
+#     p "Sorry your email or password is invalid! Try again!"
+#   end
+# end 
 
-get '/signed_up' do
-   	@date = DateTime.now.strftime("%D")
-   	erb :"signed_up"
-end
-
-# ========= END SIGN UP ===================
-
-# ========== LOGIN =======================
-
-get '/login' do
-	@date = DateTime.now.strftime("%D")
- 	erb :"login"
-end 
-
-# get '/loged_in' do
-# 	erb :"loged_in"
+# get '/signed_up' do
+#    	@date = DateTime.now.strftime("%D")
+#    	erb :"signed_up"
 # end
 
-post '/login' do
-	# apply a authentication method to check if a user has entered a valid email and password
- 	user = User.find_by(my_email: params[:email])
- 	if user && user.authenticate(params[:password]) 
- 		# p "Welcome back #{user.my_email}!"
-		# session[:user_id] = user.id
-		sign_in(user)
-		redirect "/users/#{current_user.id}"
+# # ========= END SIGN UP ===================
 
- 	else p "Invalid email or password! Try again!"
- 	end
-	# if a user has successfully been authenticated, you can assign the current user id to a session
-end
+# # ========== LOGIN =======================
 
-# =========== END LOGIN ===================
+# get '/login' do
+# 	@date = DateTime.now.strftime("%D")
+#  	erb :"login"
+# end 
 
-# ========== LOGOUT =====================
-get '/logout' do
- 	# kill a session when a user chooses to logout, for example, assign nil to a session
- 	# session[:user_id] = nil
- 	sign_out
- 	# redirect to the appropriate page
- 	redirect "/"
-end
+# # get '/loged_in' do
+# # 	erb :"loged_in"
+# # end
 
-# ========== END LOGOUT ====================
+# post '/login' do
+# 	# apply a authentication method to check if a user has entered a valid email and password
+#  	user = User.find_by(my_email: params[:email])
+#  	if user && user.authenticate(params[:password]) 
+#  		# p "Welcome back #{user.my_email}!"
+# 		# session[:user_id] = user.id
+# 		sign_in(user)
+# 		redirect "/users/#{current_user.id}"
 
-get '/users/:id' do
-	@user = User.find(params[:id])
-	erb :"users/home"
+#  	else p "Invalid email or password! Try again!"
+#  	end
+# 	# if a user has successfully been authenticated, you can assign the current user id to a session
+# end
 
-end
+# # =========== END LOGIN ===================
 
-get '/profile' do
-  erb :"profile"
-end
+# # ========== LOGOUT =====================
+# get '/logout' do
+#  	# kill a session when a user chooses to logout, for example, assign nil to a session
+#  	# session[:user_id] = nil
+#  	sign_out
+#  	# redirect to the appropriate page
+#  	redirect "/"
+# end
 
-post '/users/:id' do
-  # create @user variable
-  # fix route to include params id (restful routes)
-  puts params
-  @user = User.find(params[:id])
-  # name = @user(params[:name])
-  # name = params[:name]
-  @user.update(full_name: params[:name])
-  redirect "/users/#{current_user.id}"
-end
+# # ========== END LOGOUT ====================
+
+# # ========== PROFILE PAGE ===========
+
+# get '/users/:id' do
+# 	@user = User.find(params[:id])
+# 	erb :"users/home"
+
+# end
+
+# get '/users/edit' do
+#   erb :"users/edit"
+# end
+
+# post '/users/:id/edit' do
+#   # create @user variable
+#   # fix route to include params id (restful routes)
+#   puts params
+#   @user = User.find(params[:id])
+#   # name = @user(params[:name])
+#   # name = params[:name]
+#   @user.update(full_name: params[:name])
+#   redirect "/users/#{current_user.id}"
+# end
+
+
+
+# # ========== END PROFILE PAGE ==========
+
+# # ============ QUESTIONS ===========
+
+# get '/questions' do
+#   @questions = Question.all
+#   @questions
+# end
+
+# post '/question/new' do
+#   erb :"questions/new"
+# end
+
+# post '/questions' do
+# end
+# # ============= END QUESTIONS ========
 
 
 

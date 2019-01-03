@@ -1,0 +1,14 @@
+<h1> Welcome Back! </h1>
+
+<%= "Happy to see you again, #{@user.full_name} " %> <br/>
+<%= "What do you want to search today?" %> <br/><br/>
+
+<a href = "<%= "/users/#{@user.id}/edit" %>"><button>Change my profile name</button></a> <br/> 
+
+<a href = "/logout"><button>Logout</button></a> <br/>
+
+<a href = "/questions/new"><button>Add a quiestion</button></a><br/>
+
+<a href = "/questions"><button>All quiestions</button></a>
+
+
