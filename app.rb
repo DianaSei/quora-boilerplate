@@ -3,10 +3,11 @@ set :run, true
 set :sessions => true
 
 get '/' do
-  @name = "Diana Seidakhmetova"
   @date = DateTime.now.strftime("%D")
-  erb :"home"
+  erb :"show"
 end
+
+# ======== SIGN UP ===============
 
 post '/signup' do
   user = User.new(params[:user])
@@ -21,24 +22,23 @@ post '/signup' do
   end
 end 
 
-
 get '/signed_up' do
    	@date = DateTime.now.strftime("%D")
    	erb :"signed_up"
 end
 
+# ========= END SIGN UP ===================
+
+# ========== LOGIN =======================
 
 get '/login' do
 	@date = DateTime.now.strftime("%D")
  	erb :"login"
 end 
 
-
-
-get '/loged_in' do
-	erb :"loged_in"
-end
-
+# get '/loged_in' do
+# 	erb :"loged_in"
+# end
 
 post '/login' do
 	# apply a authentication method to check if a user has entered a valid email and password
@@ -47,14 +47,17 @@ post '/login' do
  		# p "Welcome back #{user.my_email}!"
 		# session[:user_id] = user.id
 		sign_in(user)
-		redirect "/loged_in"
+		redirect "/users/#{current_user.id}"
 
  	else p "Invalid email or password! Try again!"
  	end
 	# if a user has successfully been authenticated, you can assign the current user id to a session
 end
 
-post '/logout' do
+# =========== END LOGIN ===================
+
+# ========== LOGOUT =====================
+get '/logout' do
  	# kill a session when a user chooses to logout, for example, assign nil to a session
  	# session[:user_id] = nil
  	sign_out
@@ -62,10 +65,29 @@ post '/logout' do
  	redirect "/"
 end
 
-get 'users/:id' do
+# ========== END LOGOUT ====================
+
+get '/users/:id' do
 	@user = User.find(params[:id])
 	erb :"users/home"
 
 end
+
+get '/profile' do
+  erb :"profile"
+end
+
+post '/users/:id' do
+  # create @user variable
+  # fix route to include params id (restful routes)
+  puts params
+  @user = User.find(params[:id])
+  # name = @user(params[:name])
+  # name = params[:name]
+  @user.update(full_name: params[:name])
+  redirect "/users/#{current_user.id}"
+end
+
+
 
 
