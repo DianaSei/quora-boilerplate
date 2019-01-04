@@ -1,0 +1,10 @@
+<%= "#{@questions.description}" %>
+
+ <form method ='post' action='/questions/<%= "#{@questions.id}" %>/delete'>
+ 	<input type = "hidden" name = "_method" value ="delete">
+   <button>Delete a question</button> 
+</form>
+
+<a href = "/questions/<%= "#{@questions.id}" %>/update">
+   <button>Edit a question</button> 
+</a>

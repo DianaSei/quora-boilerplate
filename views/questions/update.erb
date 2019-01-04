@@ -1,0 +1,6 @@
+<h2>Please key in the new version of your question </h2>
+<form method ='post' action='/questions/<%="#{@question_to_update.id}" %>/update'>
+	<input type= "hidden" name = "_method" value ="patch">
+   <input type="text" name="question">
+   <input type="submit" value="Submit">
+</form>

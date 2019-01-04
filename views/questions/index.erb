@@ -1,3 +1,14 @@
 <h1> All questions </h1>
-<ul method='post' action='/questions'> 
+
+<a href = "/my_questions"><button>My questions</button></a>
+
+<a href = "/questions"><button>All questions</button></a>
+
+<% @questions.each do |question| %>
+
+<ul>
+	<a href = "/questions/<%= "#{question.id}" %>"> <li> <%= question.description%> </li> </a>
 </ul>
+
+<% end %>
+

@@ -64,7 +64,7 @@ if Sinatra::Application.development?
 
    encoding: 'utf8',
 
-   pool: 10
+   pool: 1000
 
  )
 
@@ -86,7 +86,7 @@ else
 
    encoding: 'utf8',
 
-   pool: 10
+   pool: 1000
    
 
  )
