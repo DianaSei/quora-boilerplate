@@ -68,7 +68,9 @@ get '/users/:id/edit' do
 end
 
 get '/users/:id' do
+  @date = DateTime.now.strftime("%D")
   @user = current_user
+  @answers = Answer.where(:user_id => @user.id )
   erb :"users/index"
 
 end

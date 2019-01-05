@@ -1,0 +1,6 @@
+<h1> Are you sure you want to delete the answer? </h1>
+
+<form method ='post' action='/questions/<%= @question.id %>/answers/<%= "#{@answers.id}" %>/delete'>
+ 	<input type = "hidden" name = "_method" value ="delete"><br/>
+   <button>Yes, delete</button> 
+</form>

@@ -1,6 +1,6 @@
 require_relative './config/init.rb'
 set :run, true
-set :sessions => true
+enable :sessions 
 
 get '/' do
   @date = DateTime.now.strftime("%D")
