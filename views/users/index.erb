@@ -1,24 +1,41 @@
-<h1> Welcome back! </h1>
 
-<%= "Today is #{@date} " %> <br/>
+
+<h1 class="text-center font-weight-light"> Welcome back! </h1>
+
+<p class="text-center font-weight-light"><%= "Today is #{@date} " %> <br/>
 <%= "Happy to see you again, #{@user.full_name}!" %> <br/>
-<%= "What do you want to search today?" %> <br/><br/>
+<%= "What do you want to search today?" %></p> 
 
-<a href = "<%= "/users/#{@user.id}/edit" %>"><button>Change my profile name</button></a> <br/> 
+<ul class="nav justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link active" href="<%= "/users/#{@user.id}/edit" %>">Change my profile name</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/questions/new">Add a question</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/questions">View all questions</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/logout">Logout</a>
+  </li>
+</ul> <br/>
 
-<a href = "/questions/new"><button>Add a quiestion</button></a><br/>
 
-<a href = "/questions"><button>View all quiestions</button></a>
-
-<a href = "/logout"><button>Logout</button></a> <br/>
-
-<h2>My answers</h2>
+<h2 class="font-weight-light text-center">My answers:</h2><br/>
 
 <% @answers.each do |answer| %>
 
-<ul>
-	
-	<a href = "/user/<%=@user.id%>/answers/<%=answer.id%>"> <li> <%=answer.description%> </li> </a>
-</ul>
+<div class="container">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">My answer</h5>
+        <p class="card-text"><%=answer.description%></p>
+        <a href="/user/<%=@user.id%>/answers/<%=answer.id%>" class="btn btn-primary">Go to the question</a>
+      </div>
+  	</div>
+</div>
 
 <% end %>
+
+

@@ -1,9 +1,28 @@
-<h1>Quora Clone</h1>
-<%= "Welcome to Quora Clone!" %> <br/>
-<%= "Today is #{@date}" %> <br/>
-<%= "Congradulations! You have successfully signed up!" %> <br/>
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Requred meta tags for bootstrap -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<spin>Please login now</spin>
-<form method='get' action='/login'>
-    <button>Login</button>
-</form>
+<!-- Bootstrap CSS and JS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<h1 class="text-center font-weight-light">Quora Clone</h1>
+<p class="text-center font-weight-light"> <%= "Welcome to Quora Clone!" %> <br/>
+<%= "Today is #{@date}" %> <br/>
+<%= "Congradulations! You have successfully signed up!" %> </p><br/>
+
+<p class="text-center font-weight-light">Please login now:</p>
+
+<a href="/login"><div class="text-center"><button type="button" class="btn btn-primary col-sm-4">Login</button></div></a>
+
+
+</body>
+</html>

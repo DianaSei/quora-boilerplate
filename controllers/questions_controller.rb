@@ -34,6 +34,7 @@ end
 get '/questions/:id' do
 	@questions = Question.find(params[:id])
 	@answers = Answer.where(:question_id => @questions.id).order(updated_at: :desc)
+
 	# @answers.order(updated_at: :asc)
 	# @answers = Answer.where(question_id: params[:id]).order(:updated_at)
 	erb :"questions/show"

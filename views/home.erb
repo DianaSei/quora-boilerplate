@@ -1,17 +1,25 @@
-<h1>Quora Clone</h1>
-<%= "Welcome to Quora Clone!" %> <br/>
-<%= "Today is #{@date}" %>
 
-<h2>Sign up for an account now!</h2>
-<form method="post" action="/signup">
-    <input type=text placeholder="Email" name="user[my_email]"><br>
-    <input type=password placeholder="Password" name="user[password]"></br>
-    <input type=submit value="Sign up">
+
+<h1 class="text-center font-weight-light">Quora Clone</h1>
+<p class="text-center font-weight-light"><%= "Welcome to Quora Clone!" %> <br/>
+<%= "Today is #{@date}" %> </p> <br style="line-height: 60px" />
+
+<h2 class= "text-center h3 mb-3 font-weight-light">Sign up for an account now!</h2>
+
+<form method='post' action='/signup' class="container col-md-6">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="user[my_email]">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="user[password]">
+  </div>
+  <button type="submit" class="btn btn-primary">Sign up</button>
 </form>
 
-<p> If you are already a registered user please <a href ="http://localhost:4567/login">login</a> here </p>
 
-<!-- new
-edit
-show - show 1
-index - show all -->
+<p class="text-center"> If you are already a registered user please <a href ="http://localhost:4567/login">login</a> here </p>
+
+

@@ -1,6 +1,8 @@
-<h1> Are you sure you want to delete the answer? </h1>
+<h1 class="text-center font-weight-light"> Are you sure you want to delete the answer? </h1>
 
 <form method ='post' action='/questions/<%= @question.id %>/answers/<%= "#{@answers.id}" %>/delete'>
  	<input type = "hidden" name = "_method" value ="delete"><br/>
-   <button>Yes, delete</button> 
+   	<div class="container text-center">
+   	<button class="btn btn-outline-danger">Yes, delete</button> 
+   </div> 
 </form>

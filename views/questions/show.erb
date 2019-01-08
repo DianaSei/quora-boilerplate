@@ -1,32 +1,51 @@
-<%= @questions.description %>
 
- <form method ='post' action='/questions/<%= @questions.id %>/delete'>
- 	<input type = "hidden" name = "_method" value ="delete"><br/>
-   <button>Delete a question</button> 
-</form>
+<a href = '/questions'><button type="button" class="btn btn-outline-secondary"> Go back to the questions</button></a> <br/>
+<p class="font-weight-bold text-center"><%= @questions.description %></p>
 
-<a href = "/questions/<%= "#{@questions.id}" %>/update">
-   <button> Edit a question </button> </a> <br/> <br/>
+<div class="container text-center">
+	<div class="btn-group" role="group" aria-label="Basic example">
 
-<a href = "/questions/<%= "#{@questions.id}" %>/answers/new">
-   <button>Answer a question</button> 
-</a>
+	<% if current_user && @questions.user_id == current_user.id %>
+	  <form method ='post' action='/questions/<%= @questions.id %>/delete'> <input type = "hidden" name = "_method" value ="delete"> 
+	  	<button type="submit" class="btn btn-light">Delete a question</button> 
+	  </form>
+	  <a href = "/questions/<%= "#{@questions.id}" %>/update"><button type="button" class="btn btn-light">Edit a question</button></a>
+	<% end %>
+
+	  <a href = "/questions/<%= "#{@questions.id}" %>/answers/new"><button type="button" class="btn btn-light">Answer a question</button></a>
+	</div>
+</div> <br/>
 
 <!-- display answers -->
 <% @answers.each do |answer| %>
-<ul>
-	<li> User number: <%= answer.user_id%> <br/> 
-		Answer: <%=answer.description%> 
-		<% if current_user && answer.user_id == current_user.id %>
-			<a href = "/questions/<%= @questions.id %>/answers/<%= answer.id %>/delete"><button>Delete</button></a>
 
-			<form method ='post' action='/questions/<%= @questions.id%> /answers/<%= answer.id %>/update'>
+<div class="container">
+    <div class="card">
+      <div class="card-body">
+      	 <% if current_user && answer.user_id == current_user.id %>
+ 			<a href="/questions/<%=@questions.id%>/answers/<%=answer.id%>/delete"><button type="button" class=" close float-right" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button> </a>
+			<%end %>
+        <h5 class="card-title">Answer: <%=answer.description%> </h5>
+        <p class="card-text">User number: <%= answer.user_id%></p>
+        <% if current_user && answer.user_id == current_user.id %>
+        <form method ='post' action='/questions/<%= @questions.id%> /answers/<%= answer.id %>/update'>
 	 			<input type = "hidden" name = "_method" value ="patch">
 	 			<input type=text placeholder="Edit an answer" name="updated_answer">
-	 			<input type = "submit" value = "Edit Answer">
+	 			<input class="btn btn-outline-dark" type = "submit" value = "Edit Answer"> 
  			</form>
-		<% end %>	
-	</li> 
-</ul>
+		<% end %>
+
+			<form>
+	 			<spin class="vote-count-<%=answer.id%>"> Vote count: <%=answer.votes.count%></spin> 
+	 			<button class="btn btn-primary vote-btn" type = "submit" id="<%=@questions.id%>" value = "<%=answer.id%>"> Vote</button>
+ 			</form>
+      </div>
+  	</div>
+</div>
+
 <% end %>
+
+
 

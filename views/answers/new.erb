@@ -1,5 +1,11 @@
-<h2>Answer the question</h2>
+<h2 class="text-center font-weight-light">Answer the question</h2>
+
+
 <form method='post' action='/questions/<%= "#{@questions.id}" %>/answers/new'>
-   <input type="text" name="answer">
-   <input type="submit" value="Submit">
+	<div class="container input-group mb-3">
+	  <input type="text" class="form-control" placeholder="Type your answer" aria-label="Answer" aria-describedby="button-addon2" name="answer">
+	  <div class="input-group-append">
+	    <button class="btn btn-outline-success" type="submit" id="button-addon2">Submit</button>
+	  </div>
+	</div>
 </form>

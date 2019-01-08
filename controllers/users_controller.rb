@@ -55,7 +55,7 @@ get '/logout' do
  	# session[:user_id] = nil
  	sign_out
  	# redirect to the appropriate page
- 	redirect "/"
+ 	redirect "/login"
 end
 
 # ========== END LOGOUT ====================

@@ -45,8 +45,6 @@ end
 
 # ========= Update an Answer ==========
 
-# how to sort by latest updated first 
-
  patch '/questions/:question_id/answers/:id/update' do
 	
 	@answers = Answer.find(params[:id])
@@ -55,4 +53,16 @@ end
 	redirect "questions/#{params[:question_id]}"
 end
 
-# ========== End of Update an Asnwer===
+# ========== End of Update an Asnwer========
+
+
+
+
+
+
+
+
+
+
+
+
